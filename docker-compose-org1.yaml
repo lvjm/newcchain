@@ -153,8 +153,10 @@ services:
     command: /bin/bash
     volumes:
         - /var/run/:/host/var/run/
-        - ./config/peerOrganizations/org1.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.newcchain.com
-        - ./config/peerOrganizations/org3.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.newcchain.com
+       # - ./config/peerOrganizations/org1.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.newcchain.com
+       # - ./config/peerOrganizations/org3.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.newcchain.com
+        - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ./config:/opt/gopath/src/github.com/hyperledger/fabric/peer/config/
         - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
     depends_on:
       - peer0.org1.newcchain.com
