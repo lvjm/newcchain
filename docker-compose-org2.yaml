@@ -127,8 +127,7 @@ services:
     volumes:
         - /var/run/:/host/var/run/
         - ./config/peerOrganizations/org1.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.newcchain.com
-        - ./config/peerOrganizations/org2.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.newcchain.com
-        - ./config/peerOrganizations/org2.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.newcchain.com
+        - ./config/peerOrganizations/org3.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.newcchain.com
         - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
     depends_on:
       - peer0.org2.newcchain.com
