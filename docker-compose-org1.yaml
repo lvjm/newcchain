@@ -16,9 +16,10 @@ services:
       #TLS enable
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.newcchain.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/dedaf83b1ea767a5488bd7eabfaead4d5d723944843652780b20b31f7227d81f_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/106a17a06ce4706635dfd11ec681a6ece60234df082cca5543d69b6f174c3b57_sk
     ports:
       - "7054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.newcchain.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/106a17a06ce4706635dfd11ec681a6ece60234df082cca5543d69b6f174c3b57_sk -b admin:adminpw -d'
     volumes:
       - ./crypto-config/peerOrganizations/org1.newcchain.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.newcchain.com

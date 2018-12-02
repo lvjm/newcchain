@@ -19,7 +19,7 @@ services:
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/dedaf83b1ea767a5488bd7eabfaead4d5d723944843652780b20b31f7227d81f_sk
     ports:
       - "7054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org2.newcchain.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/06e429dde003af9bdbf744b018132621ca012a4a8b38a204ea5392c19a3f17b9_sk -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org2.newcchain.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/dedaf83b1ea767a5488bd7eabfaead4d5d723944843652780b20b31f7227d81f_sk -b admin:adminpw -d'
     volumes:
       - ./crypto-config/peerOrganizations/org2.newcchain.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.newcchain.com
@@ -126,8 +126,10 @@ services:
     command: /bin/bash
     volumes:
         - /var/run/:/host/var/run/
-        - ./config/peerOrganizations/org1.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.newcchain.com
-        - ./config/peerOrganizations/org3.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.newcchain.com
+       # - ./config/peerOrganizations/org1.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.newcchain.com
+       # - ./config/peerOrganizations/org3.newcchain.com:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.newcchain.com
+        - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ./config:/opt/gopath/src/github.com/hyperledger/fabric/peer/config/
         - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
     depends_on:
       - peer0.org2.newcchain.com
